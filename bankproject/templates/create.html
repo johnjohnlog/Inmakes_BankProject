@@ -1,0 +1,196 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Colorlib Templates">
+    <meta name="author" content="Colorlib">
+    <meta name="keywords" content="Colorlib Templates">
+
+    <!-- Title Page-->
+    <title>Create page</title>
+
+    <!-- Icons font CSS-->
+    <link href="{% static 'ac/vendor/mdi-font/css/material-design-iconic-font.min.css' %}" rel="stylesheet" media="all">
+    <link href="{% static 'ac/vendor/font-awesome-4.7/css/font-awesome.min.css' %}" rel="stylesheet" media="all">
+    <!-- Font special for pages-->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+    <!-- Vendor CSS-->
+    <link href="{% static 'ac/vendor/select2/select2.min.css' %}" rel="stylesheet" media="all">
+    <link href="{% static 'ac/vendor/datepicker/daterangepicker.css' %}" rel="stylesheet" media="all">
+
+    <!-- Main CSS-->
+    <link href="{% static 'ac/css/main.css' %}" rel="stylesheet" media="all">
+    <script>
+            function random_function()
+            {
+                var a=document.getElementById("input").value;
+                if(a==="Ernakulam")
+                {
+                    var arr=["Edapally","Vytilla","Fort Kochi"];
+                }
+                else if(a==="Kollam")
+                {
+                    var arr=["Punalur","Thenmala","Aryankavu"];
+                }
+                else if(a==="Trivandrum")
+                {
+                    var arr=["Pattam","Attingal","Varkala"];
+                }
+
+                var string="";
+
+                for(i=0;i<arr.length;i++)
+                {
+                    string=string+"<option value="+arr[i]+">"+arr[i]+"</option>";
+                }
+                document.getElementById("output").innerHTML=string;
+            }
+        </script>
+</head>
+
+<body>
+    <div class="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins">
+        <div class="wrapper wrapper--w680">
+            <div class="card card-4">
+                <div class="card-body">
+                    <h2 class="title">Create Account</h2>
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Name</label>
+                                    <input class="input--style-4" type="text" name="name" required>
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Age</label>
+                                    <input class="input--style-4" type="number" name="age" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Birthday</label>
+                                    <div class="input-group-icon">
+                                        <input class="input--style-4 js-datepicker" type="text" name="birthday" required>
+                                        <i class="zmdi zmdi-calendar-note input-icon js-btn-calendar"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Gender</label>
+                                    <div class="p-t-10">
+                                        <label class="radio-container m-r-45">Male
+                                            <input type="radio" checked="checked" name="gender">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                        <label class="radio-container">Female
+                                            <input type="radio" name="gender">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Address</label>
+                                    <input class="input--style-4" type="text" name="address" required>
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Materials</label>
+                                    <h6 class=""><input type="checkbox">Debit Card</h6>
+                                    <h6 class=""><input type="checkbox">Credit card</h6>
+                                    <h6 class=""><input type="checkbox">Cheque book</h6>
+                                </div>
+                            </div>
+                        </div>
+
+                            <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Phone</label>
+                                    <input class="input--style-4" type="tel" name="phone" required>
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Email</label>
+                                    <input class="input--style-4" type="email" name="email" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row row-space">
+                            <div class="col-2">
+                        <div class="input-group">
+                            <label class="label">District</label>
+<!--                            <div class="rs-select2 js-select-simple select&#45;&#45;no-search">-->
+                                <select id="input" onchange="random_function()">
+                                    <option>select District</option>
+                                    <option>Ernakulam</option>
+                                    <option>Trivandrum</option>
+                                    <option>Kollam</option>
+                                </select>
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Branch</label>
+                                   <select id="output" onchange="random_function1()">
+                                       <option>select Branch</option>
+                                       </select><br>
+                                    </div>
+                            </div>
+                        </div>
+                        <div class="row row-space">
+                            <div class="col-2">
+                        <div class="input-group">
+                            <label class="label">Account Type</label>
+                                <select>
+                                    <option>Select Account</option>
+                                    <option>Savings Account</option>
+                                    <option>Current Account</option>
+                                </select>
+                                </div>
+                            </div>
+                            </div>
+                                <div class="select-dropdown"></div>
+                        <div class="p-t-15">
+                            <button class="btn btn--radius-2 btn--blue" type="submit">Submit</button>
+                        </div>
+                    </form>
+                    {% for i in messages %}
+                    <h2>{{i}}</h2>
+                    <a class="btn btn--radius-2 btn--green" href="{% url 'bankapp:index' %}">Go to Home page</a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Jquery JS-->
+    <script src="{% static 'ac/vendor/jquery/jquery.min.js' %}"></script>
+    <!-- Vendor JS-->
+    <script src="{% static 'ac/vendor/select2/select2.min.js' %}"></script>
+    <script src="{% static 'ac/vendor/datepicker/moment.min.js' %}"></script>
+    <script src="{% static 'ac/vendor/datepicker/daterangepicker.js' %}"></script>
+
+    <!-- Main JS-->
+    <script src="{% static 'ac/js/global.js' %}"></script>
+
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+
+</html>
+<!-- end document-->
